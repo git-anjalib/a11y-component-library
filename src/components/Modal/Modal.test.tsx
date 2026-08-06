@@ -1,0 +1,45 @@
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Modal } from "./Modal";
+import { Button } from "../Button/Button";
+
+function TestHarness() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <div>
+      <Button onClick={() => setIsOpen(true)}>Open modal</Button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Confirm">
+        <p>Are you sure?</p>
+        <Button onClick={() => setIsOpen(false)}>Confirm</Button>
+      </Modal>
+    </div>
+  );
+}
+
+describe("Modal", () => {
+  it("moves focus into the dialog when it opens", () => {
+    render(<TestHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "Open modal" }));
+
+    // First focusable element inside the dialog should now have focus
+    expect(screen.getByRole("button", { name: "Confirm" })).toHaveFocus();
+  });
+
+  it("closes on Escape and restores focus to the trigger", () => {
+    render(<TestHarness />);
+    const trigger = screen.getByRole("button", { name: "Open modal" });
+    fireEvent.click(trigger);
+
+    fireEvent.keyDown(document, { key: "Escape" });
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
+  });
+
+  it("exposes an accessible name via aria-labelledby", () => {
+    render(<TestHarness />);
+    fireEvent.click(screen.getByRole("button", { name: "Open modal" }));
+
+    expect(screen.getByRole("dialog", { name: "Confirm" })).toBeInTheDocument();
+  });
+});

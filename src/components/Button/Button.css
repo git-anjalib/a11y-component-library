@@ -1,0 +1,51 @@
+.a11y-btn {
+  font: inherit;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Never remove the focus outline — this is one of the most common
+   real-world accessibility violations. Style it, don't hide it. */
+.a11y-btn:focus-visible {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+.a11y-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.a11y-btn--primary {
+  background: #1a3a5f;
+  color: #fff;
+}
+
+.a11y-btn--secondary {
+  background: #fff;
+  color: #1a3a5f;
+  border-color: #1a3a5f;
+}
+
+.a11y-btn--danger {
+  background: #b3261e;
+  color: #fff;
+}
+
+.a11y-btn__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: a11y-spin 0.6s linear infinite;
+}
+
+@keyframes a11y-spin {
+  to { transform: rotate(360deg); }
+}
