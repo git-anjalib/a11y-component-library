@@ -15,7 +15,7 @@ export const App: React.FC = () => {
 
   return (
     <main style={{ fontFamily: "sans-serif", padding: "2rem", maxWidth: 640 }}>
-      <h1>a11y-component-library — dev preview</h1>
+      <h1>a11y-component-library — preview</h1>
       <p>
         Try tabbing through this page, and opening the modal with only your
         keyboard (Tab to the button, Enter to activate, Escape to close).
