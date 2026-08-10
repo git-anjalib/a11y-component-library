@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
-import { Accordion, AccordionItem } from "./components/Accordion/Accordion";
+import { Accordion } from "./components/Accordion/Accordion";
+import { AccordionContent } from "./components/Accordion/AccordionContent";
+import { AccordionHeader } from "./components/Accordion/AccordionHeader";
+import { AccordionItem } from "./components/Accordion/AccordionItem";
 
 /**
  * This App is just a dev-time playground for manually trying out the
@@ -61,20 +64,20 @@ export const App: React.FC = () => {
           supports one open item at a time, and doesn't yet support keyboard
           navigation or ARIA attributes.
         </p>
-        <Accordion 
-          items={[
-            {
-              id: "item-1",
-              title: "Item 1",
-              content: <p>Content for Item 1</p>
-            },
-            {
-              id: "item-2",
-              title: "Item 2",
-              content: <p>Content for Item 2</p>
-            }
-          ]}
-        />
+        <Accordion className="accordion-project">
+          <AccordionItem>
+            <AccordionHeader title="Item 1" />
+            <AccordionContent>
+              <p>Content for Item 1</p>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionHeader title="Item 2" />
+            <AccordionContent>
+              <p>Content for Item 2</p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </section>
     </main>
   );
