@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Modal } from "./Modal";
 import { Button } from "../Button/Button";
 
@@ -17,18 +18,20 @@ function TestHarness() {
 }
 
 describe("Modal", () => {
-  it("moves focus into the dialog when it opens", () => {
+  it("moves focus into the dialog when it opens", async () => {
+    const user = userEvent.setup();
     render(<TestHarness />);
-    fireEvent.click(screen.getByRole("button", { name: "Open modal" }));
+    await user.click(screen.getByRole("button", { name: "Open modal" }));
 
     // First focusable element inside the dialog should now have focus
     expect(screen.getByRole("button", { name: "Confirm" })).toHaveFocus();
   });
 
-  it("closes on Escape and restores focus to the trigger", () => {
+  it("closes on Escape and restores focus to the trigger", async () => {
+    const user = userEvent.setup();
     render(<TestHarness />);
     const trigger = screen.getByRole("button", { name: "Open modal" });
-    fireEvent.click(trigger);
+    await user.click(trigger);
 
     fireEvent.keyDown(document, { key: "Escape" });
 
@@ -36,9 +39,10 @@ describe("Modal", () => {
     expect(trigger).toHaveFocus();
   });
 
-  it("exposes an accessible name via aria-labelledby", () => {
+  it("exposes an accessible name via aria-labelledby", async () => {
+    const user = userEvent.setup();
     render(<TestHarness />);
-    fireEvent.click(screen.getByRole("button", { name: "Open modal" }));
+    await user.click(screen.getByRole("button", { name: "Open modal" }));
 
     expect(screen.getByRole("dialog", { name: "Confirm" })).toBeInTheDocument();
   });

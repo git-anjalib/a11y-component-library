@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
+import { Accordion, AccordionItem } from "./components/Accordion/Accordion";
 
 /**
  * This App is just a dev-time playground for manually trying out the
@@ -51,6 +52,29 @@ export const App: React.FC = () => {
           <p>Focus is trapped inside here. Try pressing Tab repeatedly.</p>
           <Button onClick={() => setIsModalOpen(false)}>Close</Button>
         </Modal>
+      </section>
+
+      <section>
+        <h2>Accordion</h2>
+        <p>
+          This is a work-in-progress Accordion component. It currently only
+          supports one open item at a time, and doesn't yet support keyboard
+          navigation or ARIA attributes.
+        </p>
+        <Accordion 
+          items={[
+            {
+              id: "item-1",
+              title: "Item 1",
+              content: <p>Content for Item 1</p>
+            },
+            {
+              id: "item-2",
+              title: "Item 2",
+              content: <p>Content for Item 2</p>
+            }
+          ]}
+        />
       </section>
     </main>
   );

@@ -35,6 +35,17 @@ export const Modal: React.FC<ModalProps> = ({
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerElementRef = useRef<HTMLElement | null>(null);
 
+  // Keep the latest onClose in a ref, updated on every render, so the
+  // effect below doesn't need onClose in its dependency array. Without
+  // this, an inline `onClose={() => ...}` passed by the parent gets a new
+  // identity on every render, which would re-run the whole effect (and
+  // re-capture the wrong "restore focus to" element) even when the modal
+  // is still open and nothing meaningful actually changed.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -46,7 +57,7 @@ export const Modal: React.FC<ModalProps> = ({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        onCloseRef.current();
         return;
       }
 
@@ -76,7 +87,7 @@ export const Modal: React.FC<ModalProps> = ({
       // and screen-reader users aren't dropped back at the top of the page.
       triggerElementRef.current?.focus();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

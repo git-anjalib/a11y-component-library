@@ -1,0 +1,17 @@
+.a11y-accordion {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.a11y-accordion .a11y-accordion__item > .a11y-accordion__content{
+  padding: 15px;
+  border: none;
+  transition: max-height 0.2s ease-out;
+}
+.a11y-accordion .a11y-accordion__item >button{
+  border:none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 14px;
+}
