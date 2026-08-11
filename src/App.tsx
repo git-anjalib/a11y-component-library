@@ -68,13 +68,13 @@ export const App: React.FC = () => {
           <AccordionItem>
             <AccordionHeader title="Item 1" />
             <AccordionContent>
-              <p>Content for Item 1</p>
+              Content for Item 1
             </AccordionContent>
           </AccordionItem>
           <AccordionItem>
             <AccordionHeader title="Item 2" />
             <AccordionContent>
-              <p>Content for Item 2</p>
+              Content for Item 2
             </AccordionContent>
           </AccordionItem>
         </Accordion>

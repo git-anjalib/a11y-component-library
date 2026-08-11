@@ -17,7 +17,7 @@ export const AccordionContent = ({ children }: AccordionContentProps) => {
       aria-hidden={!isOpen}
       className={`a11y-accordion__content ${hiddenClass}`}
     >
-      {children}
+      <p>{children}</p>
     </div>
   );
 };
