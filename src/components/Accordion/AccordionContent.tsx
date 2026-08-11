@@ -14,7 +14,6 @@ export const AccordionContent = ({ children }: AccordionContentProps) => {
       id={contentId}
       role="region"
       aria-labelledby={headingId}
-      hidden={!isOpen}
       aria-hidden={!isOpen}
       className={`a11y-accordion__content ${hiddenClass}`}
     >

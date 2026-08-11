@@ -2,11 +2,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.a11y-accordion .a11y-accordion__item > .a11y-accordion__content{
-  padding: 15px;
-  border: none;
-  transition: max-height 0.2s ease-out;
-}
+
 .a11y-accordion .a11y-accordion__item >button{
   border:none;
   border-bottom: 1px solid #ccc;
@@ -14,4 +10,18 @@
   text-align: left;
   padding: 15px;
   font-size: 14px;
+}
+.a11y-accordion__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease;
+  padding: 0 1rem;
+}
+
+.a11y-accordion__content > * {
+  overflow: hidden;
+}
+
+.a11y-accordion__content:not(.--hidden) {
+  grid-template-rows: 1fr;
 }

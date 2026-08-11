@@ -14,8 +14,8 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({title}) => {
       type="button"
       className="a11y-accordion__header"
       aria-expanded={isOpen}
-      aria-controls={`${contentId}`}
-      onClick={() => toggle()}
+      aria-controls={contentId}
+      onClick={toggle}
     >
       {title}
     </button>
