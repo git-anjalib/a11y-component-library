@@ -21,7 +21,7 @@ export const App: React.FC = () => {
   return (
     <main style={{ fontFamily: "sans-serif", padding: "2rem", maxWidth: 640 }}>
       <h1>a11y-component-library — preview</h1>
-      <p>Deployment test successful!</p>
+      <p>Automatic deployment test — October 2026</p>
       <p>
         Try tabbing through this page, and opening the modal with only your
         keyboard (Tab to the button, Enter to activate, Escape to close).
