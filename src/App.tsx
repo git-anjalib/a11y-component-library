@@ -5,6 +5,7 @@ import { Accordion } from "./components/Accordion/Accordion";
 import { AccordionContent } from "./components/Accordion/AccordionContent";
 import { AccordionHeader } from "./components/Accordion/AccordionHeader";
 import { AccordionItem } from "./components/Accordion/AccordionItem";
+import { Table } from "./components/Table/Table";
 
 /**
  * This App is just a dev-time playground for manually trying out the
@@ -78,6 +79,23 @@ export const App: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+      </section>
+
+      <section>
+        <h2>Table</h2>
+        <Table
+          caption="User table"
+          data={[
+            { id: 1, name: "Alice", email: "alice@example.com", role: "Admin" },
+            { id: 2, name: "Bob", email: "bob@example.com", role: "User" },
+            { id: 3, name: "Charlie", email: "charlie@example.com", role: "Moderator" }
+          ]}
+          columns={[
+            { id: 1, accessorKey: "name", header: "Name" },
+            { id: 2, accessorKey: "email", header: "Email" },
+            { id: 3, accessorKey: "role", header: "Role" }
+          ]}
+        ></Table>
       </section>
     </main>
   );
