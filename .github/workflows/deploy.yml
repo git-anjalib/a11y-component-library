@@ -55,5 +55,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: "pages-deploy.yml",
-              ref: "gh-pages"
+              ref: "main"
             });
